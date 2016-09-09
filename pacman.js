@@ -85,14 +85,11 @@ function eatDot() {
 }
 
 function eatGhost(ghost){
-  for (i = 0; i < ghosts.length; i++) {
-    var ghost = ghosts[i];
     if (ghost["edible"] === false) {
       lives--;
-    }
-    console.log("Your dead! Killed by " + ghost[i] + " of the color " + ghost["color"])
+    console.log("Your dead! Killed by " + ghost["name"] + " of the color " + ghost["color"])
 
-  }
+    }
 }
 
 // Process Player's Input
@@ -105,6 +102,18 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
+    case '1':
+      eatGhost(inky);
+      break;
+    case '2':
+      eatGhost(blinky);
+      break;
+    case '3':
+      eatGhost(pinky);
+      break;
+    case '4':
+      eatGhost(inky);
+      break; 
     default:
       console.log('\nInvalid Command!');
   }
