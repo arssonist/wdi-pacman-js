@@ -35,6 +35,8 @@ var clyde = {
   edible: false
 };
 
+var ghosts = [inky, blinky, pinky, clyde];
+
 
 // Draw the screen functionality
 function drawScreen() {
@@ -57,6 +59,11 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  // console.log('(1) Eat Inky');
+  // console.log('(2) Eat Blinky');
+  // console.log('(3) Eat Pinky');
+  // console.log('(1) Eat Clyde');
+  displayGhosts();
   console.log('(q) Quit');
 }
 
@@ -65,12 +72,21 @@ function displayPrompt() {
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
 }
 
+function displayGhosts(){
+ for (i = 0; i < ghosts.length; i++){
+   var ghost = ghosts[i];
+   console.log("(" + (i + 1) + ") " + ghost["name"]);
+ }
+}
 // Menu Options
 function eatDot() {
   console.log('\nChomp!');
   score += 10;
 }
 
+// functoin eatGhost(ghost){
+//
+// }
 // Process Player's Input
 function processInput(key) {
   switch(key) {
