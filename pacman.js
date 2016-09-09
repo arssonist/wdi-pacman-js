@@ -84,9 +84,17 @@ function eatDot() {
   score += 10;
 }
 
-// functoin eatGhost(ghost){
-//
-// }
+function eatGhost(ghost){
+  for (i = 0; i < ghosts.length; i++) {
+    var ghost = ghosts[i];
+    if (ghost["edible"] === false) {
+      lives--;
+    }
+    console.log("Your dead! Killed by " + ghost[i] + " of the color " + ghost["color"])
+
+  }
+}
+
 // Process Player's Input
 function processInput(key) {
   switch(key) {
