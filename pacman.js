@@ -1,6 +1,7 @@
 // Setup initial game stats
 var score = 0;
-var lives = 2;
+var lives = 2
+var powerPellets = 4
 
 // Define your ghosts here
 var inky = {
@@ -53,7 +54,7 @@ function clearScreen() {
 }
 
 function displayStats() {
-  console.log('Score: ' + score + '     Lives: ' + lives);
+  console.log('Score: ' + score + '     Lives: ' + lives + '\n' + '\n' +  '\n' + 'Power Pellets: ' + powerPellets);
 }
 
 function displayMenu() {
@@ -87,8 +88,8 @@ function eatDot() {
 function eatGhost(ghost){
     if (ghost["edible"] === false) {
       lives--;
-    console.log("Your dead! Killed by " + ghost["name"] + " of the color " + ghost["color"])
-
+      console.log("Your dead! Killed by " + ghost["name"] + " of the color " + ghost["color"]);
+      checkLife();
     }
 }
 
@@ -113,9 +114,15 @@ function processInput(key) {
       break;
     case '4':
       eatGhost(inky);
-      break; 
+      break;
     default:
       console.log('\nInvalid Command!');
+  }
+}
+// After pacman eats ghost, apply gameover.
+function checkLife() {
+  if (lives <= 0) {
+    process.exit();
   }
 }
 
