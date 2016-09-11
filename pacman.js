@@ -89,10 +89,14 @@ function eatDot() {
 }
 
 function eatGhost(ghost){
-    if (ghost["edible"] === false) {
-      lives--;
-      console.log("Your dead! Killed by " + ghost["name"] + " of the color " + ghost["color"]);
-      checkLife();
+  if (ghost["edible"] === false) {
+    lives--;
+    console.log('\n' + "Your dead! Killed by " + ghost["name"] + " of the color " + ghost["color"]);
+    checkLife();
+} else if (ghost["edible"] === true) {
+    console.log('\n' + "You have just eaten " + ghost["name"] + " whose color is " + ghost["color"] + " , and chracter is " + ghost["character"])
+
+
     }
 }
 
@@ -135,9 +139,9 @@ function processInput(key) {
     case 'p':
     if (powerPellets >= 0){
       eatPowerPellet();
-      console.log(" You have " + powerPellets + " left")
+      console.log('\n' + "You have " + powerPellets + " left")
     } else {
-      console.log("You have No Power-Pellets left!")}
+      console.log('\n' + "You have No Power-Pellets left!")}
       break;
     default:
       console.log('\nInvalid Command!');
