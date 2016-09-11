@@ -9,7 +9,6 @@ var inky = {
   menu_option: '1',
   color: 'Red',
   character: 'Shadow',
-  edible: false
 };
 
 var blinky = {
@@ -61,8 +60,9 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  if  (powerPellets > 0)
-  console.log('(p) Eat Power-Pellet');
+  if  (powerPellets > 0){
+    console.log('(p) Eat Power-Pellet');
+  }
   // console.log('(1) Eat Inky');
   // console.log('(2) Eat Blinky');
   // console.log('(3) Eat Pinky');
@@ -77,9 +77,11 @@ function displayPrompt() {
 }
 
 function displayGhosts(){
- for (i = 0; i < ghosts.length; i++){
-   var ghost = ghosts[i];
-   console.log("(" + (i + 1) + ") " + ghost["name"]);
+  function displayGhosts(){
+    for (var i = 0; i < ghosts.length - 1; i++){
+      ghosts[i].edible = true }}
+   console.log("(" + (i + 1) + ") " + "Eat " + ghost["name"] + edible;
+
  }
 }
 // Menu Options
@@ -95,9 +97,10 @@ function eatGhost(ghost){
     checkLife();
 } else if (ghost["edible"] === true) {
     console.log('\n' + "You have just eaten " + ghost["name"] + " whose color is " + ghost["color"] + " , and chracter is " + ghost["character"])
+    score += 200
+    ghost['edible'] = false
+  }
 
-
-    }
 }
 
 // function gameOver
