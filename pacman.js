@@ -36,6 +36,7 @@ var clyde = {
   edible: false
 };
 
+var ghosts = new Object;
 var ghosts = [inky, blinky, pinky, clyde];
 
 
@@ -60,14 +61,16 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  if  (powerPellets > 0)
+  console.log('(p) Eat Power-Pellet');
   // console.log('(1) Eat Inky');
   // console.log('(2) Eat Blinky');
   // console.log('(3) Eat Pinky');
   // console.log('(1) Eat Clyde');
   displayGhosts();
   console.log('(q) Quit');
-}
 
+}
 function displayPrompt() {
   // process.stdout.write is similar to console.log except it doesn't add a new line after the text
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
@@ -93,6 +96,20 @@ function eatGhost(ghost){
     }
 }
 
+// function gameOver
+// need explanation on this
+function eatPowerPellet(){
+    score += 50;
+    ghosts.forEach(function(ghost){
+     ghost.edible = true;
+   })
+   powerPellets--;
+ }
+
+// function powerPelletCheck{
+//   if (powerPellets <= 0)
+// }
+
 // Process Player's Input
 function processInput(key) {
   switch(key) {
@@ -114,6 +131,13 @@ function processInput(key) {
       break;
     case '4':
       eatGhost(inky);
+      break;
+    case 'p':
+    if (powerPellets >= 0){
+      eatPowerPellet();
+      console.log(" You have " + powerPellets + " left")
+    } else {
+      console.log("You have No Power-Pellets left!")}
       break;
     default:
       console.log('\nInvalid Command!');
