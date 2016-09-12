@@ -1,7 +1,7 @@
 // Setup initial game stats
 var score = 0;
-var lives = 2
-var powerPellets = 4
+var lives = 2;
+var powerPellets = 4;
 
 // Define your ghosts here
 var inky = {
@@ -9,6 +9,7 @@ var inky = {
   menu_option: '1',
   color: 'Red',
   character: 'Shadow',
+  edible: false
 };
 
 var blinky = {
@@ -35,7 +36,7 @@ var clyde = {
   edible: false
 };
 
-var ghosts = new Object;
+// var ghosts = new Object;
 var ghosts = [inky, blinky, pinky, clyde];
 
 
@@ -50,7 +51,7 @@ function drawScreen() {
 }
 
 function clearScreen() {
-  console.log('\x1Bc');
+  console.log('\x1Bc');``
 }
 
 function displayStats() {
@@ -68,6 +69,7 @@ function displayMenu() {
   // console.log('(3) Eat Pinky');
   // console.log('(1) Eat Clyde');
   displayGhosts();
+
   console.log('(q) Quit');
 
 }
@@ -77,11 +79,14 @@ function displayPrompt() {
 }
 
 function displayGhosts(){
-  function displayGhosts(){
-    for (var i = 0; i < ghosts.length - 1; i++){
-      ghosts[i].edible = true }}
-   console.log("(" + (i + 1) + ") " + "Eat " + ghost["name"] + edible;
-
+ for (i = 0; i < ghosts.length; i++){
+   var ghost = ghosts[i];
+   if (ghost['edible'] === true) {
+     ghost.text = '(edible)';
+   } else {
+     ghost.text = '(Inedible)';
+   }
+   console.log("(" + (i + 1) + ") " + ghost["name"] + " " + ghost.text);
  }
 }
 // Menu Options
@@ -137,7 +142,7 @@ function processInput(key) {
       eatGhost(pinky);
       break;
     case '4':
-      eatGhost(inky);
+      eatGhost(clyde);
       break;
     case 'p':
     if (powerPellets >= 0){
